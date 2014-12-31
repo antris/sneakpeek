@@ -1,0 +1,15 @@
+{
+  "name": "sneakpeek",
+  "version": "0.0.0",
+  "description": "Hides header when scrolling down. Shows header when scrolling up.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "browser",
+    "mobile"
+  ],
+  "author": "Anton Rissanen",
+  "license": "MIT"
+}
