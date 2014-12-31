@@ -51,7 +51,6 @@
     if (!inBrowser) { return elem }
     options = options || {}
     var hiddenClass = options.hiddenClass || 'sneakpeek--hidden'
-    var body = document.body
     var scrollState = {
       y: getScrollPos(),
       d: 0
