@@ -1,5 +1,6 @@
 (function() {
   var root = this;
+  var absolute = Math.abs;
 
   var throttle = function(func, wait) {
     var context, args, result
@@ -31,20 +32,17 @@
   }
 
   var getScrollPos = function() {
-    var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
+    var scrollTop = (pageYOffset !== undefined) ? pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
     return (scrollTop < 0 ? 0 : scrollTop)
   }
   var inBrowser = typeof window !== "undefined"
 
-  var addClass = function(elem, className) { elem.classList.add(className) }
-  var removeClass = function(elem, className) { elem.classList.remove(className) }
-
-  var scrollDelta = function(previousState, scrollTop) {
-    var diff = scrollTop - previousState.scrollTop
-    var delta = Math.abs(previousState.delta) < Math.abs(previousState.delta + diff) ? previousState.delta + diff : diff
+  var scrollDelta = function(previousState, y) {
+    var diff = y - previousState.y
+    var newDelta = absolute(previousState.d) < absolute(previousState.d + diff) ? previousState.d + diff : diff
     var newState = {
-      delta: delta,
-      scrollTop: scrollTop
+      d: newDelta,
+      y: y
     }
     return newState
   }
@@ -55,16 +53,16 @@
     var hiddenClass = options.hiddenClass || 'sneakpeek--hidden'
     var body = document.body
     var scrollState = {
-      scrollTop: getScrollPos(),
-      delta: 0
+      y: getScrollPos(),
+      d: 0
     }
-    window.addEventListener('scroll', throttle(function() {
+    addEventListener('scroll', throttle(function() {
       scrollState = scrollDelta(scrollState, getScrollPos())
-      if (scrollState.delta > 120) {
-        addClass(elem, hiddenClass)
+      if (scrollState.d > 120) {
+        elem.classList.add(hiddenClass)
       }
-      if (scrollState.delta < -120) {
-        removeClass(elem, hiddenClass)
+      if (scrollState.d < -120) {
+        elem.classList.remove(hiddenClass)
       }
     }, 100), false)
     return elem
