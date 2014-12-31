@@ -3,6 +3,8 @@
 Hides header when scrolling down. Shows header when scrolling up. No external
 dependencies.
 
+Weighs less than 1kB gzipped.
+
 It shows/hides the header by toggling a `header__hidden` class. Style it however
 you want.
 
