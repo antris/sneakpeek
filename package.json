@@ -10,6 +10,10 @@
     "browser",
     "mobile"
   ],
+  "repository": {
+    "type" : "git",
+    "url" : "http://github.com/antris/sneakpeek.git"
+  },
   "author": "Anton Rissanen",
   "license": "MIT"
 }
