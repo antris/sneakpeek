@@ -31,7 +31,8 @@
   }
 
   var getScrollPos = function() {
-    return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
+    var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
+    return (scrollTop < 0 ? 0 : scrollTop)
   }
   var inBrowser = typeof window !== "undefined"
 
