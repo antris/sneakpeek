@@ -18,3 +18,12 @@ With browserify:
 
     sneakpeek = require('sneakpeek')
     sneakpeek(document.getElementById('header'))
+
+Regular script tags:
+
+    <script src="index.js"></script>
+    <script>
+      sneakpeek(document.getElementById('header'))
+    </script>
+
+See `demo.html` for an example.
