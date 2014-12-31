@@ -30,6 +30,9 @@
     }
   }
 
+  var getScrollPos = function() {
+    return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
+  }
   var inBrowser = typeof window !== "undefined"
 
   var addClass = function(elem, className) { elem.classList.add(className) }
@@ -51,11 +54,11 @@
     var hiddenClass = options.hiddenClass || 'sneakpeek--hidden'
     var body = document.body
     var scrollState = {
-      scrollTop: body.scrollTop,
+      scrollTop: getScrollPos(),
       delta: 0
     }
     window.addEventListener('scroll', throttle(function() {
-      scrollState = scrollDelta(scrollState, body.scrollTop)
+      scrollState = scrollDelta(scrollState, getScrollPos())
       if (scrollState.delta > 120) {
         addClass(elem, hiddenClass)
       }
