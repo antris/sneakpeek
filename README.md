@@ -2,9 +2,10 @@
 
 Hides header when scrolling down. Shows header when scrolling up. No external
 dependencies. Similar to
-[Headroom.js](https://github.com/WickyNilliams/headroom.js).
+[Headroom.js](https://github.com/WickyNilliams/headroom.js). Weighs less than
+1kB gzipped.
 
-Weighs less than 1kB gzipped.
+Try the [demo](http://htmlpreview.github.io/?https://github.com/antris/sneakpeek/blob/master/demo.html).
 
 It shows/hides the header by toggling a `sneakpeek--hidden` class.
 
