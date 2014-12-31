@@ -1,7 +1,8 @@
 # sneakpeek
 
 Hides header when scrolling down. Shows header when scrolling up. No external
-dependencies.
+dependencies. Similar to
+[Headroom.js](https://github.com/WickyNilliams/headroom.js).
 
 Weighs less than 1kB gzipped.
 
