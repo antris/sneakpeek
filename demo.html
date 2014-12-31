@@ -4,6 +4,8 @@
   <title>sneakpeek demo</title>
   <style>
     .header {
+      transition: transform 0.3s;
+      transform: translate(0, 0);
       position: fixed;
       top: 0;
       left: 0;
@@ -13,7 +15,7 @@
       color: #fff;
     }
     .header__hidden {
-      top: -80px;
+      transform: translate(0, -80px);
     }
     .content {
       margin-top: 80px;

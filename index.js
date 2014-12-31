@@ -35,9 +35,32 @@
   var addClass = function(elem, className) { elem.classList.add(className) }
   var removeClass = function(elem, className) { elem.classList.remove(className) }
 
+  var scrollDelta = function(previousState, scrollTop) {
+    var diff = scrollTop - previousState.scrollTop
+    var delta = Math.abs(previousState.delta) < Math.abs(previousState.delta + diff) ? previousState.delta + diff : diff
+    var newState = {
+      delta: delta,
+      scrollTop: scrollTop
+    }
+    return newState
+  }
+
   var sneakpeek = function(elem) {
     if (!inBrowser) { return elem }
-    window.addEventListener('scroll', throttle(function() { console.log('scroll') }, 100), false)
+    var body = document.body
+    var scrollState = {
+      scrollTop: body.scrollTop,
+      delta: 0
+    }
+    window.addEventListener('scroll', throttle(function() {
+      scrollState = scrollDelta(scrollState, body.scrollTop)
+      if (scrollState.delta > 120) {
+        addClass(elem, 'header__hidden')
+      }
+      if (scrollState.delta < -120) {
+        removeClass(elem, 'header__hidden')
+      }
+    }, 100), false)
     return elem
   }
 
