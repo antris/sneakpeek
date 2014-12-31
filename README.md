@@ -41,3 +41,7 @@ Regular script tags:
     </script>
 
 See `demo.html` for an example.
+
+## License
+
+Licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
