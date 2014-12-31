@@ -45,8 +45,10 @@
     return newState
   }
 
-  var sneakpeek = function(elem) {
+  var sneakpeek = function(elem, options) {
     if (!inBrowser) { return elem }
+    options = options || {}
+    var hiddenClass = options.hiddenClass || 'sneakpeek--hidden'
     var body = document.body
     var scrollState = {
       scrollTop: body.scrollTop,
@@ -55,10 +57,10 @@
     window.addEventListener('scroll', throttle(function() {
       scrollState = scrollDelta(scrollState, body.scrollTop)
       if (scrollState.delta > 120) {
-        addClass(elem, 'header__hidden')
+        addClass(elem, hiddenClass)
       }
       if (scrollState.delta < -120) {
-        removeClass(elem, 'header__hidden')
+        removeClass(elem, hiddenClass)
       }
     }, 100), false)
     return elem

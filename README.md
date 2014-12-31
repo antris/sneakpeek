@@ -6,7 +6,7 @@ dependencies. Similar to
 
 Weighs less than 1kB gzipped.
 
-It shows/hides the header by toggling a `header__hidden` class. Style it however
+It shows/hides the header by toggling a `sneakpeek--hidden` class. Style it however
 you want.
 
 ## Install
