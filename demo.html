@@ -160,6 +160,8 @@
 </main>
 <script>
   sneakpeek(document.getElementById("header"))
+  sneakpeek.emitter.on('hide', function(){ console.log('header hidden')})
+  sneakpeek.emitter.on('show', function(){ console.log('header shown')})
 </script>
 </body>
 </html>

@@ -47,25 +47,61 @@
     return newState
   }
 
+  var emitter = (function() {
+    var listeners = []
+    var emit = function(eventType) {
+      listeners
+        .filter(function(listener){ return listener.t == eventType })
+        .forEach(function(listener){ listener.f() })
+    }
+    var scrollState;
+    var firstScroll = true;
+    var headerIsVisible = true;
+    addEventListener('scroll', throttle(function() {
+      if (firstScroll) {
+        firstScroll = false;
+        scrollState = {
+          y: getScrollPos(),
+          d: 0
+        }
+        return
+      }
+      scrollState = scrollDelta(scrollState, getScrollPos())
+      if (scrollState.d > 120 && headerIsVisible) {
+        emit('hide')
+        headerIsVisible = false;
+      }
+      if (scrollState.d < -120 && !headerIsVisible) {
+        emit('show')
+        headerIsVisible = true;
+      }
+    }), false)
+    return {
+      on: function(eventType, listener) {
+        listeners = listeners.concat([{ t: eventType, f: listener }])
+      },
+      off: function(eventType, listener) {
+        listeners = listeners.filter(function(existingListener) {
+          return existingListener.f !== listener || existingListener.t !== eventType
+        })
+      }
+    }
+  })()
+
   var sneakpeek = function(elem, options) {
     if (!inBrowser) { return elem }
     options = options || {}
     var hiddenClass = options.hiddenClass || 'sneakpeek--hidden'
-    var scrollState = {
-      y: getScrollPos(),
-      d: 0
-    }
-    addEventListener('scroll', throttle(function() {
-      scrollState = scrollDelta(scrollState, getScrollPos())
-      if (scrollState.d > 120) {
-        elem.classList.add(hiddenClass)
-      }
-      if (scrollState.d < -120) {
-        elem.classList.remove(hiddenClass)
-      }
-    }, 100), false)
+    emitter.on('hide', function() {
+      elem.classList.add(hiddenClass)
+    })
+    emitter.on('show', function() {
+      elem.classList.remove(hiddenClass)
+    })
     return elem
   }
+
+  sneakpeek.emitter = emitter
 
   if (typeof exports !== 'undefined') {
     if (typeof module !== 'undefined' && module.exports) {
