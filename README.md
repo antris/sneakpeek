@@ -46,7 +46,17 @@ Regular script tags:
 </script>
 ```
 
-See `demo.html` for an example.
+### Events
+
+If you don't want to switch a class as a side effect, but decide yourself on
+what to do when the user scrolls up or down, use `sneakpeek.emitter`:
+
+```js
+emitter = require('sneakpeek').emitter
+
+emitter.on('hide', function() { console.log('header hidden') })
+emitter.on('show', function() { console.log('header shown')  })
+```
 
 ## License
 
