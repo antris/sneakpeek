@@ -54,8 +54,8 @@ what to do when the user scrolls up or down, use `sneakpeek.emitter`:
 ```js
 emitter = require('sneakpeek').emitter
 
-emitter.on('hide', function() { console.log('header hidden') })
-emitter.on('show', function() { console.log('header shown')  })
+emitter.on('hide', function() { console.log('user scolled down, header hidden') })
+emitter.on('show', function() { console.log('user scrolled up, header shown')  })
 ```
 
 ## License
