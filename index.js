@@ -48,6 +48,8 @@
   }
 
   var emitter = (function() {
+    var noop = function(){}
+    if (!inBrowser) { return {on: noop, off: noop}}
     var listeners = []
     var emit = function(eventType) {
       listeners
