@@ -3,27 +3,23 @@
   var absolute = Math.abs;
 
   var throttle = function(func, wait) {
-    var context, args, result
+    var result
     var timeout = null
     var previous = 0
     var later = function() {
       previous = +new Date
       timeout = null
-      result = func.apply(context, args)
-      if (!timeout) context = args = null
+      result = func()
     }
     return function() {
       var now = +new Date
       if (!previous) previous = now
       var remaining = wait - (now - previous)
-      context = this
-      args = arguments
       if (remaining <= 0 || remaining > wait) {
         clearTimeout(timeout)
         timeout = null
         previous = now
-        result = func.apply(context, args)
-        if (!timeout) context = args = null
+        result = func()
       } else if (!timeout) {
         timeout = setTimeout(later, remaining)
       }
