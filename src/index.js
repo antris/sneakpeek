@@ -1,8 +1,8 @@
 /* @flow */
 
 (function() {
-                                 
-  var root      = this
+  declare var pageYOffset: number
+  var root: any = this
   var inBrowser = typeof window !== "undefined"
   var WAIT = 100
 
@@ -78,10 +78,10 @@
       }
     }), false)
     return {
-      on: function(eventType        , listener          ) {
+      on: function(eventType: string, listener: Function) {
         listeners = listeners.concat([{ t: eventType, f: listener }])
       },
-      off: function(eventType        , listener          ) {
+      off: function(eventType: string, listener: Function) {
         listeners = listeners.filter(function(existingListener) {
           return existingListener.f !== listener || existingListener.t !== eventType
         })
@@ -89,7 +89,7 @@
     }
   })()
 
-  var sneakpeek      = function(elem        , options        ) {
+  var sneakpeek: any = function(elem: Object, options: Object) {
     if (!inBrowser) { return elem }
     options = options || {}
     var hiddenClass = options.hiddenClass || 'sneakpeek--hidden'
