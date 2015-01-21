@@ -1,8 +1,9 @@
 (function() {
   var root = this;
   var absolute = Math.abs;
+  var WAIT = 100;
 
-  var throttle = function(func, wait) {
+  var throttle = function(func) {
     var timeout = null
     var previous = 0
     var later = function() {
@@ -13,8 +14,8 @@
     return function() {
       var now = +new Date
       if (!previous) previous = now
-      var remaining = wait - (now - previous)
-      if (remaining <= 0 || remaining > wait) {
+      var remaining = WAIT - (now - previous)
+      if (remaining <= 0 || remaining > WAIT) {
         clearTimeout(timeout)
         timeout = null
         previous = now
