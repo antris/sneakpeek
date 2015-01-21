@@ -1,6 +1,6 @@
 # sneakpeek
 
-<img src="example.gif" alt="Example showing what sneakpeek might look like in production" width="300" height=277 />
+<img src="example.gif" alt="Example showing what sneakpeek might look like in production" width="300" height="277" align="right" />
 
 Hides header when scrolling down. Shows header when scrolling up. No external
 dependencies. Similar to
