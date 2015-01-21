@@ -1,6 +1,6 @@
 {
   "name": "sneakpeek",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Hides header when scrolling down. Shows header when scrolling up.",
   "main": "index.js",
   "scripts": {
