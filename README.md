@@ -1,5 +1,7 @@
 # sneakpeek
 
+![Example showing what sneakpeek might look like in production](example.gif)
+
 Hides header when scrolling down. Shows header when scrolling up. No external
 dependencies. Similar to
 [Headroom.js](https://github.com/WickyNilliams/headroom.js). Weighs less than
