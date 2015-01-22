@@ -1,0 +1,19 @@
+{
+  "name": "sneakpeek",
+  "main": "index.js",
+  "version": "0.0.10",
+  "homepage": "https://github.com/antris/sneakpeek",
+  "authors": [
+    "Anton Rissanen"
+  ],
+  "description": "Hides header when scrolling down. Shows header when scrolling up.",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "browser",
+    "mobile"
+  ],
+  "license": "MIT"
+}
